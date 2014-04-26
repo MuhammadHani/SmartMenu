@@ -1,0 +1,1190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Database.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DatabaseStoreContainer">
+          <EntitySet Name="Ads" EntityType="Database.Store.Ads" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AdsResources" EntityType="Database.Store.AdsResources" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Alerts" EntityType="Database.Store.Alerts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Branches" EntityType="Database.Store.Branches" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Categories" EntityType="Database.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Complaints" EntityType="Database.Store.Complaints" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ItemPhotos" EntityType="Database.Store.ItemPhotos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ItemRatings" EntityType="Database.Store.ItemRatings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ItemReviews" EntityType="Database.Store.ItemReviews" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Items" EntityType="Database.Store.Items" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderItemPreferences" EntityType="Database.Store.OrderItemPreferences" store:Type="Tables" store:Schema="dbo" store:Name="OrderItemPreferences">
+            <DefiningQuery>SELECT 
+      [OrderItemPreferences].[OrderID] AS [OrderID], 
+      [OrderItemPreferences].[ItemID] AS [ItemID], 
+      [OrderItemPreferences].[SideDish] AS [SideDish], 
+      [OrderItemPreferences].[PreferenceID] AS [PreferenceID], 
+      [OrderItemPreferences].[Comment] AS [Comment], 
+      [OrderItemPreferences].[DateCreated] AS [DateCreated], 
+      [OrderItemPreferences].[CreatedBy] AS [CreatedBy], 
+      [OrderItemPreferences].[DateModified] AS [DateModified], 
+      [OrderItemPreferences].[ModifiedBy] AS [ModifiedBy]
+      FROM [dbo].[OrderItemPreferences] AS [OrderItemPreferences]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OrderItems" EntityType="Database.Store.OrderItems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Orders" EntityType="Database.Store.Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Preferences" EntityType="Database.Store.Preferences" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SideDishes" EntityType="Database.Store.SideDishes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SubCategories" EntityType="Database.Store.SubCategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tables" EntityType="Database.Store.Tables" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="Database.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AdsResources_Ads" Association="Database.Store.FK_AdsResources_Ads">
+            <End Role="Ads" EntitySet="Ads" />
+            <End Role="AdsResources" EntitySet="AdsResources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemPhotos_Items" Association="Database.Store.FK_ItemPhotos_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemPhotos" EntitySet="ItemPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemRatings_Items" Association="Database.Store.FK_ItemRatings_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemRatings" EntitySet="ItemRatings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemReviews_Items" Association="Database.Store.FK_ItemReviews_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemReviews" EntitySet="ItemReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_SubCategories" Association="Database.Store.FK_Items_SubCategories">
+            <End Role="SubCategories" EntitySet="SubCategories" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItems_Orders" Association="Database.Store.FK_OrderItems_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Tables" Association="Database.Store.FK_Orders_Tables">
+            <End Role="Tables" EntitySet="Tables" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategories_Categories" Association="Database.Store.FK_SubCategories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="SubCategories" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tables_Branches" Association="Database.Store.FK_Tables_Branches">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="Tables" EntitySet="Tables" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Ads">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TitleEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="TitleAR" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="AdsResources">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AdID" Type="int" Nullable="false" />
+          <Property Name="State" Type="bit" />
+          <Property Name="URL" Type="nvarchar" MaxLength="150" />
+          <Property Name="BinaryContent" Type="varbinary(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Alerts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Branches">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NameEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameAR" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressEN" Type="nvarchar" MaxLength="100" />
+          <Property Name="AddressAR" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NameEN" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameAR" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="100" />
+          <Property Name="BinaryContent" Type="varbinary(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Complaints">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GuestName" Type="nvarchar" MaxLength="50" />
+          <Property Name="GuestPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="GuestEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="ComplaintType" Type="int" />
+          <Property Name="ComplaintText" Type="nvarchar" MaxLength="700" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="ItemPhotos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="State" Type="bit" />
+          <Property Name="URL" Type="nvarchar" MaxLength="150" />
+          <Property Name="BinaryContent" Type="varbinary(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="ItemRatings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="Rate" Type="decimal" Scale="1" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="ItemReviews">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="ReviewAR" Type="varchar" MaxLength="500" />
+          <Property Name="ReviewEN" Type="varchar" MaxLength="500" />
+          <Property Name="GuestName" Type="varchar" MaxLength="100" />
+          <Property Name="GuestEmail" Type="varchar" MaxLength="100" />
+          <Property Name="GuestPhone" Type="varchar" MaxLength="20" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategoryID" Type="int" Nullable="false" />
+          <Property Name="NameEN" Type="varchar" MaxLength="100" />
+          <Property Name="NameAR" Type="varchar" MaxLength="100" />
+          <Property Name="DescriptionEN" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DescriptionAR" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ItemPrice" Type="decimal" Scale="2" />
+          <Property Name="HasSideDishes" Type="bit" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="100" />
+          <Property Name="BinaryContent" Type="varbinary(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'smartmenuBE.dbo.OrderItemPreferences' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="OrderItemPreferences">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ItemID" />
+            <PropertyRef Name="SideDish" />
+            <PropertyRef Name="PreferenceID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="SideDish" Type="int" Nullable="false" />
+          <Property Name="PreferenceID" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="Comment" Type="varchar" MaxLength="500" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="SideDish1" Type="int" />
+          <Property Name="SideDish2" Type="int" />
+          <Property Name="ItemPrice" Type="decimal" Scale="2" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TableID" Type="int" Nullable="false" />
+          <Property Name="State" Type="int" />
+          <Property Name="TotalPrice" Type="decimal" Scale="2" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Preferences">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NameEN" Type="varchar" MaxLength="50" />
+          <Property Name="NameAR" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="SideDishes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NameEN" Type="varchar" MaxLength="50" />
+          <Property Name="NameAR" Type="varchar" MaxLength="50" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="SubCategories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="NameEN" Type="varchar" MaxLength="100" />
+          <Property Name="NameAR" Type="varchar" MaxLength="100" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="100" />
+          <Property Name="BinaryContent" Type="varbinary(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tables">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BranchID" Type="int" Nullable="false" />
+          <Property Name="SeatNumber" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <Association Name="FK_AdsResources_Ads">
+          <End Role="Ads" Type="Database.Store.Ads" Multiplicity="1" />
+          <End Role="AdsResources" Type="Database.Store.AdsResources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ads">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdsResources">
+              <PropertyRef Name="AdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemPhotos_Items">
+          <End Role="Items" Type="Database.Store.Items" Multiplicity="1" />
+          <End Role="ItemPhotos" Type="Database.Store.ItemPhotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemPhotos">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemRatings_Items">
+          <End Role="Items" Type="Database.Store.Items" Multiplicity="1" />
+          <End Role="ItemRatings" Type="Database.Store.ItemRatings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemRatings">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemReviews_Items">
+          <End Role="Items" Type="Database.Store.Items" Multiplicity="1" />
+          <End Role="ItemReviews" Type="Database.Store.ItemReviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemReviews">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_SubCategories">
+          <End Role="SubCategories" Type="Database.Store.SubCategories" Multiplicity="1" />
+          <End Role="Items" Type="Database.Store.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="SubCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItems_Orders">
+          <End Role="Orders" Type="Database.Store.Orders" Multiplicity="1" />
+          <End Role="OrderItems" Type="Database.Store.OrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Tables">
+          <End Role="Tables" Type="Database.Store.Tables" Multiplicity="1" />
+          <End Role="Orders" Type="Database.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tables">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategories_Categories">
+          <End Role="Categories" Type="Database.Store.Categories" Multiplicity="1" />
+          <End Role="SubCategories" Type="Database.Store.SubCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubCategories">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tables_Branches">
+          <End Role="Branches" Type="Database.Store.Branches" Multiplicity="1" />
+          <End Role="Tables" Type="Database.Store.Tables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tables">
+              <PropertyRef Name="BranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Database" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" >
+        <EntityContainer Name="DatabaseContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ads" EntityType="Database.Ad" />
+          <EntitySet Name="AdsResources" EntityType="Database.AdsResource" />
+          <EntitySet Name="Alerts" EntityType="Database.Alert" />
+          <EntitySet Name="Branches" EntityType="Database.Branch" />
+          <EntitySet Name="Categories" EntityType="Database.Category" />
+          <EntitySet Name="Complaints" EntityType="Database.Complaint" />
+          <EntitySet Name="ItemPhotos" EntityType="Database.ItemPhoto" />
+          <EntitySet Name="ItemRatings" EntityType="Database.ItemRating" />
+          <EntitySet Name="ItemReviews" EntityType="Database.ItemReview" />
+          <EntitySet Name="Items" EntityType="Database.Item" />
+          <EntitySet Name="OrderItemPreferences" EntityType="Database.OrderItemPreference" />
+          <EntitySet Name="OrderItems" EntityType="Database.OrderItem" />
+          <EntitySet Name="Orders" EntityType="Database.Order" />
+          <EntitySet Name="Preferences" EntityType="Database.Preference" />
+          <EntitySet Name="SideDishes" EntityType="Database.SideDish" />
+          <EntitySet Name="SubCategories" EntityType="Database.SubCategory" />
+          <EntitySet Name="Tables" EntityType="Database.Table" />
+          <EntitySet Name="Users" EntityType="Database.User" />
+          <AssociationSet Name="FK_AdsResources_Ads" Association="Database.FK_AdsResources_Ads">
+            <End Role="Ad" EntitySet="Ads" />
+            <End Role="AdsResource" EntitySet="AdsResources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tables_Branches" Association="Database.FK_Tables_Branches">
+            <End Role="Branch" EntitySet="Branches" />
+            <End Role="Table" EntitySet="Tables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategories_Categories" Association="Database.FK_SubCategories_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="SubCategory" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemPhotos_Items" Association="Database.FK_ItemPhotos_Items">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ItemPhoto" EntitySet="ItemPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemRatings_Items" Association="Database.FK_ItemRatings_Items">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ItemRating" EntitySet="ItemRatings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemReviews_Items" Association="Database.FK_ItemReviews_Items">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ItemReview" EntitySet="ItemReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_SubCategories" Association="Database.FK_Items_SubCategories">
+            <End Role="SubCategory" EntitySet="SubCategories" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItems_Orders" Association="Database.FK_OrderItems_Orders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Tables" Association="Database.FK_Orders_Tables">
+            <End Role="Table" EntitySet="Tables" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Ad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TitleEN" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TitleAR" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdsResources" Relationship="Database.FK_AdsResources_Ads" FromRole="Ad" ToRole="AdsResource" />
+        </EntityType>
+        <EntityType Name="AdsResource">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AdID" Nullable="false" />
+          <Property Type="Boolean" Name="State" />
+          <Property Type="String" Name="URL" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="BinaryContent" MaxLength="Max" FixedLength="false" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <NavigationProperty Name="Ad" Relationship="Database.FK_AdsResources_Ads" FromRole="AdsResource" ToRole="Ad" />
+        </EntityType>
+        <EntityType Name="Alert">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NameEN" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NameAR" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AddressEN" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AddressAR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <Property Type="Boolean" Name="State" />
+          <NavigationProperty Name="Tables" Relationship="Database.FK_Tables_Branches" FromRole="Branch" ToRole="Table" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NameEN" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NameAR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ImageURL" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="BinaryContent" MaxLength="Max" FixedLength="false" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <Property Type="Boolean" Name="State" />
+          <NavigationProperty Name="SubCategories" Relationship="Database.FK_SubCategories_Categories" FromRole="Category" ToRole="SubCategory" />
+        </EntityType>
+        <EntityType Name="Complaint">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="GuestName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GuestPhone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GuestEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ComplaintType" />
+          <Property Type="String" Name="ComplaintText" MaxLength="700" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+        </EntityType>
+        <EntityType Name="ItemPhoto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ItemID" Nullable="false" />
+          <Property Type="Boolean" Name="State" />
+          <Property Type="String" Name="URL" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="BinaryContent" MaxLength="Max" FixedLength="false" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <NavigationProperty Name="Item" Relationship="Database.FK_ItemPhotos_Items" FromRole="ItemPhoto" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="ItemRating">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ItemID" Nullable="false" />
+          <Property Type="Decimal" Name="Rate" Precision="18" Scale="1" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <Property Type="Boolean" Name="State" />
+          <NavigationProperty Name="Item" Relationship="Database.FK_ItemRatings_Items" FromRole="ItemRating" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="ItemReview">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ItemID" Nullable="false" />
+          <Property Type="String" Name="ReviewAR" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ReviewEN" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GuestName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GuestEmail" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GuestPhone" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <Property Type="Boolean" Name="State" />
+          <NavigationProperty Name="Item" Relationship="Database.FK_ItemReviews_Items" FromRole="ItemReview" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SubCategoryID" Nullable="false" />
+          <Property Type="String" Name="NameEN" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NameAR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DescriptionEN" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DescriptionAR" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ItemPrice" Precision="18" Scale="2" />
+          <Property Type="Boolean" Name="HasSideDishes" />
+          <Property Type="String" Name="ImageURL" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="BinaryContent" MaxLength="Max" FixedLength="false" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <Property Type="Boolean" Name="State" />
+          <NavigationProperty Name="ItemPhotos" Relationship="Database.FK_ItemPhotos_Items" FromRole="Item" ToRole="ItemPhoto" />
+          <NavigationProperty Name="ItemRatings" Relationship="Database.FK_ItemRatings_Items" FromRole="Item" ToRole="ItemRating" />
+          <NavigationProperty Name="ItemReviews" Relationship="Database.FK_ItemReviews_Items" FromRole="Item" ToRole="ItemReview" />
+          <NavigationProperty Name="SubCategory" Relationship="Database.FK_Items_SubCategories" FromRole="Item" ToRole="SubCategory" />
+        </EntityType>
+        <EntityType Name="OrderItemPreference">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ItemID" />
+            <PropertyRef Name="SideDish" />
+            <PropertyRef Name="PreferenceID" />
+          </Key>
+          <Property Type="Int32" Name="OrderID" Nullable="false" />
+          <Property Type="Int32" Name="ItemID" Nullable="false" />
+          <Property Type="Int32" Name="SideDish" Nullable="false" />
+          <Property Type="String" Name="PreferenceID" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Comment" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="OrderID" Nullable="false" />
+          <Property Type="Int32" Name="ItemID" Nullable="false" />
+          <Property Type="Int32" Name="SideDish1" />
+          <Property Type="Int32" Name="SideDish2" />
+          <Property Type="Decimal" Name="ItemPrice" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <NavigationProperty Name="Order" Relationship="Database.FK_OrderItems_Orders" FromRole="OrderItem" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TableID" Nullable="false" />
+          <Property Type="Int32" Name="State" />
+          <Property Type="Decimal" Name="TotalPrice" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <NavigationProperty Name="OrderItems" Relationship="Database.FK_OrderItems_Orders" FromRole="Order" ToRole="OrderItem" />
+          <NavigationProperty Name="Table" Relationship="Database.FK_Orders_Tables" FromRole="Order" ToRole="Table" />
+        </EntityType>
+        <EntityType Name="Preference">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NameEN" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NameAR" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <Property Type="Boolean" Name="State" />
+        </EntityType>
+        <EntityType Name="SideDish">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NameEN" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NameAR" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Weight" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <Property Type="Boolean" Name="State" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CategoryID" Nullable="false" />
+          <Property Type="String" Name="NameEN" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NameAR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImageURL" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="BinaryContent" MaxLength="Max" FixedLength="false" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <Property Type="Boolean" Name="State" />
+          <NavigationProperty Name="Category" Relationship="Database.FK_SubCategories_Categories" FromRole="SubCategory" ToRole="Category" />
+          <NavigationProperty Name="Items" Relationship="Database.FK_Items_SubCategories" FromRole="SubCategory" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="BranchID" Nullable="false" />
+          <Property Type="Int32" Name="SeatNumber" Nullable="false" />
+          <Property Type="Int32" Name="Floor" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <Property Type="Boolean" Name="State" />
+          <NavigationProperty Name="Branch" Relationship="Database.FK_Tables_Branches" FromRole="Table" ToRole="Branch" />
+          <NavigationProperty Name="Orders" Relationship="Database.FK_Orders_Tables" FromRole="Table" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserPhone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="Int32" Name="ModifiedBy" />
+          <Property Type="Boolean" Name="State" />
+        </EntityType>
+        <Association Name="FK_AdsResources_Ads">
+          <End Type="Database.Ad" Role="Ad" Multiplicity="1" />
+          <End Type="Database.AdsResource" Role="AdsResource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdsResource">
+              <PropertyRef Name="AdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tables_Branches">
+          <End Type="Database.Branch" Role="Branch" Multiplicity="1" />
+          <End Type="Database.Table" Role="Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Table">
+              <PropertyRef Name="BranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategories_Categories">
+          <End Type="Database.Category" Role="Category" Multiplicity="1" />
+          <End Type="Database.SubCategory" Role="SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemPhotos_Items">
+          <End Type="Database.Item" Role="Item" Multiplicity="1" />
+          <End Type="Database.ItemPhoto" Role="ItemPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemPhoto">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemRatings_Items">
+          <End Type="Database.Item" Role="Item" Multiplicity="1" />
+          <End Type="Database.ItemRating" Role="ItemRating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemRating">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemReviews_Items">
+          <End Type="Database.Item" Role="Item" Multiplicity="1" />
+          <End Type="Database.ItemReview" Role="ItemReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemReview">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_SubCategories">
+          <End Type="Database.SubCategory" Role="SubCategory" Multiplicity="1" />
+          <End Type="Database.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="SubCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItems_Orders">
+          <End Type="Database.Order" Role="Order" Multiplicity="1" />
+          <End Type="Database.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Tables">
+          <End Type="Database.Table" Role="Table" Multiplicity="1" />
+          <End Type="Database.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Database" />
+        <Alias Key="Target" Value="Database.Store" />
+        <EntityContainerMapping CdmEntityContainer="DatabaseContainer" StorageEntityContainer="DatabaseStoreContainer">
+          <EntitySetMapping Name="Ads">
+            <EntityTypeMapping TypeName="Database.Ad">
+              <MappingFragment StoreEntitySet="Ads">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+                <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdsResources">
+            <EntityTypeMapping TypeName="Database.AdsResource">
+              <MappingFragment StoreEntitySet="AdsResources">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="BinaryContent" ColumnName="BinaryContent" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="AdID" ColumnName="AdID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alerts">
+            <EntityTypeMapping TypeName="Database.Alert">
+              <MappingFragment StoreEntitySet="Alerts">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="Database.Branch">
+              <MappingFragment StoreEntitySet="Branches">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="AddressAR" ColumnName="AddressAR" />
+                <ScalarProperty Name="AddressEN" ColumnName="AddressEN" />
+                <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="Database.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="BinaryContent" ColumnName="BinaryContent" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Complaints">
+            <EntityTypeMapping TypeName="Database.Complaint">
+              <MappingFragment StoreEntitySet="Complaints">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ComplaintText" ColumnName="ComplaintText" />
+                <ScalarProperty Name="ComplaintType" ColumnName="ComplaintType" />
+                <ScalarProperty Name="GuestEmail" ColumnName="GuestEmail" />
+                <ScalarProperty Name="GuestPhone" ColumnName="GuestPhone" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemPhotos">
+            <EntityTypeMapping TypeName="Database.ItemPhoto">
+              <MappingFragment StoreEntitySet="ItemPhotos">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="BinaryContent" ColumnName="BinaryContent" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemRatings">
+            <EntityTypeMapping TypeName="Database.ItemRating">
+              <MappingFragment StoreEntitySet="ItemRatings">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemReviews">
+            <EntityTypeMapping TypeName="Database.ItemReview">
+              <MappingFragment StoreEntitySet="ItemReviews">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="GuestPhone" ColumnName="GuestPhone" />
+                <ScalarProperty Name="GuestEmail" ColumnName="GuestEmail" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="ReviewEN" ColumnName="ReviewEN" />
+                <ScalarProperty Name="ReviewAR" ColumnName="ReviewAR" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="Database.Item">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="BinaryContent" ColumnName="BinaryContent" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="HasSideDishes" ColumnName="HasSideDishes" />
+                <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+                <ScalarProperty Name="DescriptionAR" ColumnName="DescriptionAR" />
+                <ScalarProperty Name="DescriptionEN" ColumnName="DescriptionEN" />
+                <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItemPreferences">
+            <EntityTypeMapping TypeName="Database.OrderItemPreference">
+              <MappingFragment StoreEntitySet="OrderItemPreferences">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="PreferenceID" ColumnName="PreferenceID" />
+                <ScalarProperty Name="SideDish" ColumnName="SideDish" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="Database.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItems">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+                <ScalarProperty Name="SideDish2" ColumnName="SideDish2" />
+                <ScalarProperty Name="SideDish1" ColumnName="SideDish1" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="Database.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preferences">
+            <EntityTypeMapping TypeName="Database.Preference">
+              <MappingFragment StoreEntitySet="Preferences">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SideDishes">
+            <EntityTypeMapping TypeName="Database.SideDish">
+              <MappingFragment StoreEntitySet="SideDishes">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="Database.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategories">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="BinaryContent" ColumnName="BinaryContent" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="Database.Table">
+              <MappingFragment StoreEntitySet="Tables">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Database.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
