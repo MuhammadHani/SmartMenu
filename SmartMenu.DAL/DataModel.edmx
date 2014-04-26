@@ -1,0 +1,1274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="smartmenuBEModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="smartmenuBEModelStoreContainer">
+          <EntitySet Name="AAA" EntityType="smartmenuBEModel.Store.AAA" store:Type="Tables" store:Schema="dbo" store:Name="AAA">
+            <DefiningQuery>SELECT 
+      [AAA].[aaasss] AS [aaasss]
+      FROM [dbo].[AAA] AS [AAA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Ads" EntityType="smartmenuBEModel.Store.Ads" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AdsResources" EntityType="smartmenuBEModel.Store.AdsResources" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Alerts" EntityType="smartmenuBEModel.Store.Alerts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Branches" EntityType="smartmenuBEModel.Store.Branches" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Categories" EntityType="smartmenuBEModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Complaints" EntityType="smartmenuBEModel.Store.Complaints" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ItemPhotos" EntityType="smartmenuBEModel.Store.ItemPhotos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ItemRatings" EntityType="smartmenuBEModel.Store.ItemRatings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ItemReviews" EntityType="smartmenuBEModel.Store.ItemReviews" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Items" EntityType="smartmenuBEModel.Store.Items" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderItemPreferences" EntityType="smartmenuBEModel.Store.OrderItemPreferences" store:Type="Tables" store:Schema="dbo" store:Name="OrderItemPreferences">
+            <DefiningQuery>SELECT 
+      [OrderItemPreferences].[OrderID] AS [OrderID], 
+      [OrderItemPreferences].[ItemID] AS [ItemID], 
+      [OrderItemPreferences].[SideDish] AS [SideDish], 
+      [OrderItemPreferences].[PreferenceID] AS [PreferenceID], 
+      [OrderItemPreferences].[Comment] AS [Comment], 
+      [OrderItemPreferences].[DateCreated] AS [DateCreated], 
+      [OrderItemPreferences].[CreatedBy] AS [CreatedBy], 
+      [OrderItemPreferences].[DateModified] AS [DateModified], 
+      [OrderItemPreferences].[ModifiedBy] AS [ModifiedBy]
+      FROM [dbo].[OrderItemPreferences] AS [OrderItemPreferences]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OrderItems" EntityType="smartmenuBEModel.Store.OrderItems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Orders" EntityType="smartmenuBEModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Preferences" EntityType="smartmenuBEModel.Store.Preferences" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SideDishes" EntityType="smartmenuBEModel.Store.SideDishes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SubCategories" EntityType="smartmenuBEModel.Store.SubCategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tables" EntityType="smartmenuBEModel.Store.Tables" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="smartmenuBEModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AdsResources_Ads" Association="smartmenuBEModel.Store.FK_AdsResources_Ads">
+            <End Role="Ads" EntitySet="Ads" />
+            <End Role="AdsResources" EntitySet="AdsResources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemPhotos_Items" Association="smartmenuBEModel.Store.FK_ItemPhotos_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemPhotos" EntitySet="ItemPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemRatings_Items" Association="smartmenuBEModel.Store.FK_ItemRatings_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemRatings" EntitySet="ItemRatings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemReviews_Items" Association="smartmenuBEModel.Store.FK_ItemReviews_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemReviews" EntitySet="ItemReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_SubCategories" Association="smartmenuBEModel.Store.FK_Items_SubCategories">
+            <End Role="SubCategories" EntitySet="SubCategories" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItems_Orders" Association="smartmenuBEModel.Store.FK_OrderItems_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Tables" Association="smartmenuBEModel.Store.FK_Orders_Tables">
+            <End Role="Tables" EntitySet="Tables" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategories_Categories" Association="smartmenuBEModel.Store.FK_SubCategories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="SubCategories" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tables_Branches" Association="smartmenuBEModel.Store.FK_Tables_Branches">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="Tables" EntitySet="Tables" />
+          </AssociationSet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'smartmenuBE.dbo.AAA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="AAA">
+          <Key>
+            <PropertyRef Name="aaasss" />
+          </Key>
+          <Property Name="aaasss" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ads">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TitleEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="TitleAR" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="AdsResources">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AdID" Type="int" Nullable="false" />
+          <Property Name="State" Type="bit" />
+          <Property Name="URL" Type="nvarchar" MaxLength="150" />
+          <Property Name="BinaryContent" Type="varbinary(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Alerts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Branches">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NameEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameAR" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressEN" Type="nvarchar" MaxLength="100" />
+          <Property Name="AddressAR" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NameEN" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameAR" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="100" />
+          <Property Name="BinaryContent" Type="varbinary(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Complaints">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GuestName" Type="nvarchar" MaxLength="50" />
+          <Property Name="GuestPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="GuestEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="ComplaintType" Type="int" />
+          <Property Name="ComplaintText" Type="nvarchar" MaxLength="700" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="ItemPhotos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="State" Type="bit" />
+          <Property Name="URL" Type="nvarchar" MaxLength="150" />
+          <Property Name="BinaryContent" Type="varbinary(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="ItemRatings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="Rate" Type="decimal" Scale="1" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="ItemReviews">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="ReviewAR" Type="varchar" MaxLength="500" />
+          <Property Name="ReviewEN" Type="varchar" MaxLength="500" />
+          <Property Name="GuestName" Type="varchar" MaxLength="100" />
+          <Property Name="GuestEmail" Type="varchar" MaxLength="100" />
+          <Property Name="GuestPhone" Type="varchar" MaxLength="20" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategoryID" Type="int" Nullable="false" />
+          <Property Name="NameEN" Type="varchar" MaxLength="100" />
+          <Property Name="NameAR" Type="varchar" MaxLength="100" />
+          <Property Name="DescriptionEN" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DescriptionAR" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ItemPrice" Type="decimal" Scale="2" />
+          <Property Name="HasSideDishes" Type="bit" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="100" />
+          <Property Name="BinaryContent" Type="varbinary(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'smartmenuBE.dbo.OrderItemPreferences' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="OrderItemPreferences">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ItemID" />
+            <PropertyRef Name="SideDish" />
+            <PropertyRef Name="PreferenceID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="SideDish" Type="int" Nullable="false" />
+          <Property Name="PreferenceID" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="Comment" Type="varchar" MaxLength="500" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="SideDish1" Type="int" />
+          <Property Name="SideDish2" Type="int" />
+          <Property Name="ItemPrice" Type="decimal" Scale="2" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TableID" Type="int" Nullable="false" />
+          <Property Name="State" Type="int" />
+          <Property Name="TotalPrice" Type="decimal" Scale="2" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Preferences">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NameEN" Type="varchar" MaxLength="50" />
+          <Property Name="NameAR" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="SideDishes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NameEN" Type="varchar" MaxLength="50" />
+          <Property Name="NameAR" Type="varchar" MaxLength="50" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="SubCategories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="NameEN" Type="varchar" MaxLength="100" />
+          <Property Name="NameAR" Type="varchar" MaxLength="100" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="100" />
+          <Property Name="BinaryContent" Type="varbinary(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tables">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BranchID" Type="int" Nullable="false" />
+          <Property Name="SeatNumber" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="State" Type="bit" />
+        </EntityType>
+        <Association Name="FK_AdsResources_Ads">
+          <End Role="Ads" Type="smartmenuBEModel.Store.Ads" Multiplicity="1" />
+          <End Role="AdsResources" Type="smartmenuBEModel.Store.AdsResources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ads">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdsResources">
+              <PropertyRef Name="AdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemPhotos_Items">
+          <End Role="Items" Type="smartmenuBEModel.Store.Items" Multiplicity="1" />
+          <End Role="ItemPhotos" Type="smartmenuBEModel.Store.ItemPhotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemPhotos">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemRatings_Items">
+          <End Role="Items" Type="smartmenuBEModel.Store.Items" Multiplicity="1" />
+          <End Role="ItemRatings" Type="smartmenuBEModel.Store.ItemRatings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemRatings">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemReviews_Items">
+          <End Role="Items" Type="smartmenuBEModel.Store.Items" Multiplicity="1" />
+          <End Role="ItemReviews" Type="smartmenuBEModel.Store.ItemReviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemReviews">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_SubCategories">
+          <End Role="SubCategories" Type="smartmenuBEModel.Store.SubCategories" Multiplicity="1" />
+          <End Role="Items" Type="smartmenuBEModel.Store.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="SubCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItems_Orders">
+          <End Role="Orders" Type="smartmenuBEModel.Store.Orders" Multiplicity="1" />
+          <End Role="OrderItems" Type="smartmenuBEModel.Store.OrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Tables">
+          <End Role="Tables" Type="smartmenuBEModel.Store.Tables" Multiplicity="1" />
+          <End Role="Orders" Type="smartmenuBEModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tables">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategories_Categories">
+          <End Role="Categories" Type="smartmenuBEModel.Store.Categories" Multiplicity="1" />
+          <End Role="SubCategories" Type="smartmenuBEModel.Store.SubCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubCategories">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tables_Branches">
+          <End Role="Branches" Type="smartmenuBEModel.Store.Branches" Multiplicity="1" />
+          <End Role="Tables" Type="smartmenuBEModel.Store.Tables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tables">
+              <PropertyRef Name="BranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="smartmenuBEModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="smartmenuBEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AAAs" EntityType="smartmenuBEModel.AAA" />
+          <EntitySet Name="Ads" EntityType="smartmenuBEModel.Ad" />
+          <EntitySet Name="AdsResources" EntityType="smartmenuBEModel.AdsResource" />
+          <EntitySet Name="Alerts" EntityType="smartmenuBEModel.Alert" />
+          <EntitySet Name="Branches" EntityType="smartmenuBEModel.Branch" />
+          <EntitySet Name="Categories" EntityType="smartmenuBEModel.Category" />
+          <EntitySet Name="Complaints" EntityType="smartmenuBEModel.Complaint" />
+          <EntitySet Name="ItemPhotos" EntityType="smartmenuBEModel.ItemPhoto" />
+          <EntitySet Name="ItemRatings" EntityType="smartmenuBEModel.ItemRating" />
+          <EntitySet Name="ItemReviews" EntityType="smartmenuBEModel.ItemReview" />
+          <EntitySet Name="Items" EntityType="smartmenuBEModel.Item" />
+          <EntitySet Name="OrderItemPreferences" EntityType="smartmenuBEModel.OrderItemPreference" />
+          <EntitySet Name="OrderItems" EntityType="smartmenuBEModel.OrderItem" />
+          <EntitySet Name="Orders" EntityType="smartmenuBEModel.Order" />
+          <EntitySet Name="Preferences" EntityType="smartmenuBEModel.Preference" />
+          <EntitySet Name="SideDishes" EntityType="smartmenuBEModel.SideDish" />
+          <EntitySet Name="SubCategories" EntityType="smartmenuBEModel.SubCategory" />
+          <EntitySet Name="Tables" EntityType="smartmenuBEModel.Table" />
+          <EntitySet Name="Users" EntityType="smartmenuBEModel.User" />
+          <AssociationSet Name="FK_AdsResources_Ads" Association="smartmenuBEModel.FK_AdsResources_Ads">
+            <End Role="Ads" EntitySet="Ads" />
+            <End Role="AdsResources" EntitySet="AdsResources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tables_Branches" Association="smartmenuBEModel.FK_Tables_Branches">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="Tables" EntitySet="Tables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategories_Categories" Association="smartmenuBEModel.FK_SubCategories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="SubCategories" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemPhotos_Items" Association="smartmenuBEModel.FK_ItemPhotos_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemPhotos" EntitySet="ItemPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemRatings_Items" Association="smartmenuBEModel.FK_ItemRatings_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemRatings" EntitySet="ItemRatings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemReviews_Items" Association="smartmenuBEModel.FK_ItemReviews_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemReviews" EntitySet="ItemReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_SubCategories" Association="smartmenuBEModel.FK_Items_SubCategories">
+            <End Role="SubCategories" EntitySet="SubCategories" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItems_Orders" Association="smartmenuBEModel.FK_OrderItems_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Tables" Association="smartmenuBEModel.FK_Orders_Tables">
+            <End Role="Tables" EntitySet="Tables" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AAA">
+          <Key>
+            <PropertyRef Name="aaasss" />
+          </Key>
+          <Property Name="aaasss" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleEN" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="TitleAR" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="AdsResources" Relationship="smartmenuBEModel.FK_AdsResources_Ads" FromRole="Ads" ToRole="AdsResources" />
+        </EntityType>
+        <EntityType Name="AdsResource">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdID" Type="Int32" Nullable="false" />
+          <Property Name="State" Type="Boolean" />
+          <Property Name="URL" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="BinaryContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="Ad" Relationship="smartmenuBEModel.FK_AdsResources_Ads" FromRole="AdsResources" ToRole="Ads" />
+        </EntityType>
+        <EntityType Name="Alert">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameEN" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="NameAR" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AddressEN" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="AddressAR" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+          <NavigationProperty Name="Tables" Relationship="smartmenuBEModel.FK_Tables_Branches" FromRole="Branches" ToRole="Tables" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameEN" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="NameAR" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ImageURL" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BinaryContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+          <NavigationProperty Name="SubCategories" Relationship="smartmenuBEModel.FK_SubCategories_Categories" FromRole="Categories" ToRole="SubCategories" />
+        </EntityType>
+        <EntityType Name="Complaint">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuestName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="GuestPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="GuestEmail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ComplaintType" Type="Int32" />
+          <Property Name="ComplaintText" Type="String" MaxLength="700" Unicode="true" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ItemPhoto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="State" Type="Boolean" />
+          <Property Name="URL" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="BinaryContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="Item" Relationship="smartmenuBEModel.FK_ItemPhotos_Items" FromRole="ItemPhotos" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="ItemRating">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+          <NavigationProperty Name="Item" Relationship="smartmenuBEModel.FK_ItemRatings_Items" FromRole="ItemRatings" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="ItemReview">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="ReviewAR" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="ReviewEN" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="GuestName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="GuestEmail" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="GuestPhone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+          <NavigationProperty Name="Item" Relationship="smartmenuBEModel.FK_ItemReviews_Items" FromRole="ItemReviews" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="NameEN" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="NameAR" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="DescriptionEN" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="DescriptionAR" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="ItemPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HasSideDishes" Type="Boolean" />
+          <Property Name="ImageURL" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BinaryContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+          <NavigationProperty Name="ItemPhotos" Relationship="smartmenuBEModel.FK_ItemPhotos_Items" FromRole="Items" ToRole="ItemPhotos" />
+          <NavigationProperty Name="ItemRatings" Relationship="smartmenuBEModel.FK_ItemRatings_Items" FromRole="Items" ToRole="ItemRatings" />
+          <NavigationProperty Name="ItemReviews" Relationship="smartmenuBEModel.FK_ItemReviews_Items" FromRole="Items" ToRole="ItemReviews" />
+          <NavigationProperty Name="SubCategory" Relationship="smartmenuBEModel.FK_Items_SubCategories" FromRole="Items" ToRole="SubCategories" />
+        </EntityType>
+        <EntityType Name="OrderItemPreference">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ItemID" />
+            <PropertyRef Name="SideDish" />
+            <PropertyRef Name="PreferenceID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="SideDish" Type="Int32" Nullable="false" />
+          <Property Name="PreferenceID" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Comment" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="SideDish1" Type="Int32" />
+          <Property Name="SideDish2" Type="Int32" />
+          <Property Name="ItemPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="smartmenuBEModel.FK_OrderItems_Orders" FromRole="OrderItems" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableID" Type="Int32" Nullable="false" />
+          <Property Name="State" Type="Int32" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="OrderItems" Relationship="smartmenuBEModel.FK_OrderItems_Orders" FromRole="Orders" ToRole="OrderItems" />
+          <NavigationProperty Name="Table" Relationship="smartmenuBEModel.FK_Orders_Tables" FromRole="Orders" ToRole="Tables" />
+        </EntityType>
+        <EntityType Name="Preference">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameEN" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NameAR" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SideDish">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameEN" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NameAR" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="NameEN" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="NameAR" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ImageURL" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BinaryContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+          <NavigationProperty Name="Category" Relationship="smartmenuBEModel.FK_SubCategories_Categories" FromRole="SubCategories" ToRole="Categories" />
+          <NavigationProperty Name="Items" Relationship="smartmenuBEModel.FK_Items_SubCategories" FromRole="SubCategories" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchID" Type="Int32" Nullable="false" />
+          <Property Name="SeatNumber" Type="Int32" Nullable="false" />
+          <Property Name="Floor" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+          <NavigationProperty Name="Branch" Relationship="smartmenuBEModel.FK_Tables_Branches" FromRole="Tables" ToRole="Branches" />
+          <NavigationProperty Name="Orders" Relationship="smartmenuBEModel.FK_Orders_Tables" FromRole="Tables" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateModified" Type="DateTime" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="State" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_AdsResources_Ads">
+          <End Role="Ads" Type="smartmenuBEModel.Ad" Multiplicity="1" />
+          <End Role="AdsResources" Type="smartmenuBEModel.AdsResource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ads">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdsResources">
+              <PropertyRef Name="AdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tables_Branches">
+          <End Role="Branches" Type="smartmenuBEModel.Branch" Multiplicity="1" />
+          <End Role="Tables" Type="smartmenuBEModel.Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tables">
+              <PropertyRef Name="BranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategories_Categories">
+          <End Role="Categories" Type="smartmenuBEModel.Category" Multiplicity="1" />
+          <End Role="SubCategories" Type="smartmenuBEModel.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubCategories">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemPhotos_Items">
+          <End Role="Items" Type="smartmenuBEModel.Item" Multiplicity="1" />
+          <End Role="ItemPhotos" Type="smartmenuBEModel.ItemPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemPhotos">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemRatings_Items">
+          <End Role="Items" Type="smartmenuBEModel.Item" Multiplicity="1" />
+          <End Role="ItemRatings" Type="smartmenuBEModel.ItemRating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemRatings">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemReviews_Items">
+          <End Role="Items" Type="smartmenuBEModel.Item" Multiplicity="1" />
+          <End Role="ItemReviews" Type="smartmenuBEModel.ItemReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ItemReviews">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_SubCategories">
+          <End Role="SubCategories" Type="smartmenuBEModel.SubCategory" Multiplicity="1" />
+          <End Role="Items" Type="smartmenuBEModel.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="SubCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItems_Orders">
+          <End Role="Orders" Type="smartmenuBEModel.Order" Multiplicity="1" />
+          <End Role="OrderItems" Type="smartmenuBEModel.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Tables">
+          <End Role="Tables" Type="smartmenuBEModel.Table" Multiplicity="1" />
+          <End Role="Orders" Type="smartmenuBEModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tables">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="smartmenuBEModelStoreContainer" CdmEntityContainer="smartmenuBEEntities">
+          <EntitySetMapping Name="AAAs">
+            <EntityTypeMapping TypeName="smartmenuBEModel.AAA">
+              <MappingFragment StoreEntitySet="AAA">
+                <ScalarProperty Name="aaasss" ColumnName="aaasss" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ads">
+            <EntityTypeMapping TypeName="smartmenuBEModel.Ad">
+              <MappingFragment StoreEntitySet="Ads">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TitleEN" ColumnName="TitleEN" />
+                <ScalarProperty Name="TitleAR" ColumnName="TitleAR" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdsResources">
+            <EntityTypeMapping TypeName="smartmenuBEModel.AdsResource">
+              <MappingFragment StoreEntitySet="AdsResources">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AdID" ColumnName="AdID" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="BinaryContent" ColumnName="BinaryContent" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alerts">
+            <EntityTypeMapping TypeName="smartmenuBEModel.Alert">
+              <MappingFragment StoreEntitySet="Alerts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="smartmenuBEModel.Branch">
+              <MappingFragment StoreEntitySet="Branches">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+                <ScalarProperty Name="AddressEN" ColumnName="AddressEN" />
+                <ScalarProperty Name="AddressAR" ColumnName="AddressAR" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="smartmenuBEModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="BinaryContent" ColumnName="BinaryContent" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Complaints">
+            <EntityTypeMapping TypeName="smartmenuBEModel.Complaint">
+              <MappingFragment StoreEntitySet="Complaints">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="GuestPhone" ColumnName="GuestPhone" />
+                <ScalarProperty Name="GuestEmail" ColumnName="GuestEmail" />
+                <ScalarProperty Name="ComplaintType" ColumnName="ComplaintType" />
+                <ScalarProperty Name="ComplaintText" ColumnName="ComplaintText" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemPhotos">
+            <EntityTypeMapping TypeName="smartmenuBEModel.ItemPhoto">
+              <MappingFragment StoreEntitySet="ItemPhotos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="BinaryContent" ColumnName="BinaryContent" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemRatings">
+            <EntityTypeMapping TypeName="smartmenuBEModel.ItemRating">
+              <MappingFragment StoreEntitySet="ItemRatings">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemReviews">
+            <EntityTypeMapping TypeName="smartmenuBEModel.ItemReview">
+              <MappingFragment StoreEntitySet="ItemReviews">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ReviewAR" ColumnName="ReviewAR" />
+                <ScalarProperty Name="ReviewEN" ColumnName="ReviewEN" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="GuestEmail" ColumnName="GuestEmail" />
+                <ScalarProperty Name="GuestPhone" ColumnName="GuestPhone" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="smartmenuBEModel.Item">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+                <ScalarProperty Name="DescriptionEN" ColumnName="DescriptionEN" />
+                <ScalarProperty Name="DescriptionAR" ColumnName="DescriptionAR" />
+                <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+                <ScalarProperty Name="HasSideDishes" ColumnName="HasSideDishes" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="BinaryContent" ColumnName="BinaryContent" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItemPreferences">
+            <EntityTypeMapping TypeName="smartmenuBEModel.OrderItemPreference">
+              <MappingFragment StoreEntitySet="OrderItemPreferences">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="SideDish" ColumnName="SideDish" />
+                <ScalarProperty Name="PreferenceID" ColumnName="PreferenceID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="smartmenuBEModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItems">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="SideDish1" ColumnName="SideDish1" />
+                <ScalarProperty Name="SideDish2" ColumnName="SideDish2" />
+                <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="smartmenuBEModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preferences">
+            <EntityTypeMapping TypeName="smartmenuBEModel.Preference">
+              <MappingFragment StoreEntitySet="Preferences">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SideDishes">
+            <EntityTypeMapping TypeName="smartmenuBEModel.SideDish">
+              <MappingFragment StoreEntitySet="SideDishes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="smartmenuBEModel.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategories">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="NameAR" ColumnName="NameAR" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="BinaryContent" ColumnName="BinaryContent" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="smartmenuBEModel.Table">
+              <MappingFragment StoreEntitySet="Tables">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="smartmenuBEModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DataModel">
+        <EntityTypeShape EntityType="smartmenuBEModel.AAA" Width="1.5" PointX="0.75" PointY="0.75" Height="1.211080729166667" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.Ad" Width="1.5" PointX="9.75" PointY="6.5" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.AdsResource" Width="1.5" PointX="12" PointY="6" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.Alert" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.Branch" Width="1.5" PointX="9.75" PointY="1" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.Category" Width="1.5" PointX="0.75" PointY="5.125" Height="3.1340950520833308" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.Complaint" Width="1.5" PointX="0.75" PointY="9.75" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.ItemPhoto" Width="1.5" PointX="7.5" PointY="1.375" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.ItemRating" Width="1.5" PointX="7.5" PointY="5" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.ItemReview" Width="1.5" PointX="7.5" PointY="8.5" Height="3.518697916666671" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.Item" Width="1.5" PointX="5.25" PointY="4.375" Height="4.6725065104166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.OrderItemPreference" Width="1.5" PointX="4.75" PointY="0.75" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.OrderItem" Width="1.5" PointX="16.5" PointY="1" Height="3.1340950520833388" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.Order" Width="1.5" PointX="14.25" PointY="1.125" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.Preference" Width="1.5" PointX="9.75" PointY="9.75" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.SideDish" Width="1.5" PointX="2.75" PointY="10.75" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.SubCategory" Width="1.5" PointX="3" PointY="5" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.Table" Width="1.5" PointX="12" PointY="1" Height="3.1340950520833388" IsExpanded="true" />
+        <EntityTypeShape EntityType="smartmenuBEModel.User" Width="1.5" PointX="4.75" PointY="10.75" Height="2.5571907552083388" IsExpanded="true" />
+        <AssociationConnector Association="smartmenuBEModel.FK_AdsResources_Ads" ManuallyRouted="false">
+          <ConnectorPoint PointX="11.25" PointY="7.4901432291666667" />
+          <ConnectorPoint PointX="12" PointY="7.4901432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="smartmenuBEModel.FK_Tables_Branches" ManuallyRouted="false">
+          <ConnectorPoint PointX="11.25" PointY="2.5670475260416659" />
+          <ConnectorPoint PointX="12" PointY="2.5670475260416659" />
+        </AssociationConnector>
+        <AssociationConnector Association="smartmenuBEModel.FK_SubCategories_Categories" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.6920475260416659" />
+          <ConnectorPoint PointX="3" PointY="6.6920475260416659" />
+        </AssociationConnector>
+        <AssociationConnector Association="smartmenuBEModel.FK_ItemPhotos_Items" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.53125" PointY="4.375" />
+          <ConnectorPoint PointX="6.53125" PointY="3.9393929036458353" />
+          <ConnectorPoint PointX="7.5" PointY="3.9393929036458353" />
+        </AssociationConnector>
+        <AssociationConnector Association="smartmenuBEModel.FK_ItemRatings_Items" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="6.37474609375" />
+          <ConnectorPoint PointX="7.5" PointY="6.37474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="smartmenuBEModel.FK_ItemReviews_Items" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="8.7737532552083337" />
+          <ConnectorPoint PointX="7.5" PointY="8.7737532552083337" />
+        </AssociationConnector>
+        <AssociationConnector Association="smartmenuBEModel.FK_Items_SubCategories" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.7593489583333337" />
+          <ConnectorPoint PointX="5.25" PointY="6.7593489583333337" />
+        </AssociationConnector>
+        <AssociationConnector Association="smartmenuBEModel.FK_OrderItems_Orders" ManuallyRouted="false">
+          <ConnectorPoint PointX="15.75" PointY="2.5958968098958337" />
+          <ConnectorPoint PointX="16.5" PointY="2.5958968098958337" />
+        </AssociationConnector>
+        <AssociationConnector Association="smartmenuBEModel.FK_Orders_Tables" ManuallyRouted="false">
+          <ConnectorPoint PointX="13.5" PointY="2.5958968098958337" />
+          <ConnectorPoint PointX="14.25" PointY="2.5958968098958337" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
