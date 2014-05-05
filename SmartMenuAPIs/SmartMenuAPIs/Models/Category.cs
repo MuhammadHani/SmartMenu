@@ -12,8 +12,6 @@ namespace SmartMenuAPIs.Models
     using System;
     using System.Collections.Generic;
     
-    //[Serializable]
-    //[System.Runtime.Serialization.KnownType(typeof(Category))]
     public partial class Category
     {
         public Category()

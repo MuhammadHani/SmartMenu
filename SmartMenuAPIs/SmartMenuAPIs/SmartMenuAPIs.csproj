@@ -152,6 +152,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\CRUD\Controllers\AdController.cs" />
+    <Compile Include="Areas\CRUD\Controllers\AdResourceController.cs" />
+    <Compile Include="Areas\CRUD\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\CRUD\Controllers\ItemController.cs" />
+    <Compile Include="Areas\CRUD\Controllers\SubCategoryController.cs" />
+    <Compile Include="Areas\CRUD\CRUDAreaRegistration.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -166,8 +172,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
+    <Compile Include="Controllers\SubCategoryController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -328,6 +337,32 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\CRUD\Views\Web.config" />
+    <Content Include="Areas\CRUD\Views\Ad\Index.cshtml" />
+    <Content Include="Areas\CRUD\Views\Ad\Details.cshtml" />
+    <Content Include="Areas\CRUD\Views\Ad\Create.cshtml" />
+    <Content Include="Areas\CRUD\Views\Ad\Edit.cshtml" />
+    <Content Include="Areas\CRUD\Views\Ad\Delete.cshtml" />
+    <Content Include="Areas\CRUD\Views\AdResource\Index.cshtml" />
+    <Content Include="Areas\CRUD\Views\AdResource\Details.cshtml" />
+    <Content Include="Areas\CRUD\Views\AdResource\Create.cshtml" />
+    <Content Include="Areas\CRUD\Views\AdResource\Edit.cshtml" />
+    <Content Include="Areas\CRUD\Views\AdResource\Delete.cshtml" />
+    <Content Include="Areas\CRUD\Views\SubCategory\Index.cshtml" />
+    <Content Include="Areas\CRUD\Views\SubCategory\Details.cshtml" />
+    <Content Include="Areas\CRUD\Views\SubCategory\Create.cshtml" />
+    <Content Include="Areas\CRUD\Views\SubCategory\Edit.cshtml" />
+    <Content Include="Areas\CRUD\Views\SubCategory\Delete.cshtml" />
+    <Content Include="Areas\CRUD\Views\Category\Index.cshtml" />
+    <Content Include="Areas\CRUD\Views\Category\Details.cshtml" />
+    <Content Include="Areas\CRUD\Views\Category\Create.cshtml" />
+    <Content Include="Areas\CRUD\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\CRUD\Views\Category\Delete.cshtml" />
+    <Content Include="Areas\CRUD\Views\Item\Index.cshtml" />
+    <Content Include="Areas\CRUD\Views\Item\Details.cshtml" />
+    <Content Include="Areas\CRUD\Views\Item\Create.cshtml" />
+    <Content Include="Areas\CRUD\Views\Item\Edit.cshtml" />
+    <Content Include="Areas\CRUD\Views\Item\Delete.cshtml" />
     <None Include="Properties\PublishProfiles\publish.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -365,6 +400,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\CRUD\Models\" />
+    <Folder Include="Areas\CRUD\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -30,6 +30,8 @@ namespace SmartMenuAPIs
              json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
              config.Formatters.Remove(config.Formatters.XmlFormatter);
 
+
+            
         }
     }
 }
