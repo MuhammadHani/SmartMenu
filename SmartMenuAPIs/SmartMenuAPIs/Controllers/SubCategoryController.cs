@@ -6,8 +6,8 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 using SmartMenuAPIs.Models;
 
 namespace SmartMenuAPIs.Controllers
@@ -16,106 +16,112 @@ namespace SmartMenuAPIs.Controllers
     {
         private DatabaseContainer db = new DatabaseContainer();
 
-        // GET api/SubCategory
-        public IEnumerable<SubCategory> GetSubCategories()
+        //// GET api/SubCategory
+        //public IQueryable<SubCategory> GetSubCategories()
+        //{
+        //    return db.SubCategories;
+        //}
+
+        /// <summary>
+        /// Get subcategories by CategoryID
+        /// </summary>
+        /// <returns>subCategories Array of objects json</returns> // USED
+        [Route("api/SubCategory/ByCategoryID/{id}")]
+        public IQueryable<SubCategory> GetSubCategoriesNew(int id)
         {
-            var subcategories = db.SubCategories.Include(s => s.Category);
-            return subcategories.AsEnumerable();
+            return db.SubCategories.Where(x => x.CategoryID == id);
         }
 
-        //Get api/SubCategory
-        public IEnumerable<SubCategory> GetSubCategories(int CategoryID)
-        {
-            var subcategories = db.SubCategories
-                .Where(x => x.CategoryID == CategoryID);//.Include(s => s.Category);
-            return subcategories.AsEnumerable();
-        }
-
-
-        // GET api/SubCategory/5
-        
-        //public SubCategory GetSubCategory(int id)
+        //// GET api/SubCategory/5
+        //[ResponseType(typeof(SubCategory))]
+        //public IHttpActionResult GetSubCategory(int id)
         //{
         //    SubCategory subcategory = db.SubCategories.Find(id);
         //    if (subcategory == null)
         //    {
-        //        throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+        //        return NotFound();
         //    }
 
-        //    return subcategory;
+        //    return Ok(subcategory);
         //}
-        // PUT api/SubCategory/5
-        public HttpResponseMessage PutSubCategory(int id, SubCategory subcategory)
-        {
-            if (!ModelState.IsValid)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
 
-            if (id != subcategory.ID)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+        //// PUT api/SubCategory/5
+        //public IHttpActionResult PutSubCategory(int id, SubCategory subcategory)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Entry(subcategory).State = EntityState.Modified;
+        //    if (id != subcategory.ID)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
+        //    db.Entry(subcategory).State = EntityState.Modified;
 
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!SubCategoryExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-        // POST api/SubCategory
-        public HttpResponseMessage PostSubCategory(SubCategory subcategory)
-        {
-            if (ModelState.IsValid)
-            {
-                db.SubCategories.Add(subcategory);
-                db.SaveChanges();
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, subcategory);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = subcategory.ID }));
-                return response;
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-        }
+        //// POST api/SubCategory
+        //[ResponseType(typeof(SubCategory))]
+        //public IHttpActionResult PostSubCategory(SubCategory subcategory)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-        // DELETE api/SubCategory/5
-        public HttpResponseMessage DeleteSubCategory(int id)
-        {
-            SubCategory subcategory = db.SubCategories.Find(id);
-            if (subcategory == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
+        //    db.SubCategories.Add(subcategory);
+        //    db.SaveChanges();
 
-            db.SubCategories.Remove(subcategory);
+        //    return CreatedAtRoute("DefaultApi", new { id = subcategory.ID }, subcategory);
+        //}
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
+        //// DELETE api/SubCategory/5
+        //[ResponseType(typeof(SubCategory))]
+        //public IHttpActionResult DeleteSubCategory(int id)
+        //{
+        //    SubCategory subcategory = db.SubCategories.Find(id);
+        //    if (subcategory == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Request.CreateResponse(HttpStatusCode.OK, subcategory);
-        }
+        //    db.SubCategories.Remove(subcategory);
+        //    db.SaveChanges();
+
+        //    return Ok(subcategory);
+        //}
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            if (disposing)
+            {
+                db.Dispose();
+            }
             base.Dispose(disposing);
+        }
+
+        private bool SubCategoryExists(int id)
+        {
+            return db.SubCategories.Count(e => e.ID == id) > 0;
         }
     }
 }

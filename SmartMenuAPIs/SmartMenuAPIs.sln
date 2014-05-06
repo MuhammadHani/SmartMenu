@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartMenuAPIs", "SmartMenuAPIs\SmartMenuAPIs.csproj", "{51A6E087-9E9F-4E46-B7EE-2C9B698E6A1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartMenuAPIs", "SmartMenuAPIs\SmartMenuAPIs.csproj", "{59CB90CD-D2B1-4FB3-853B-D3E070AD51EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{51A6E087-9E9F-4E46-B7EE-2C9B698E6A1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51A6E087-9E9F-4E46-B7EE-2C9B698E6A1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51A6E087-9E9F-4E46-B7EE-2C9B698E6A1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51A6E087-9E9F-4E46-B7EE-2C9B698E6A1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59CB90CD-D2B1-4FB3-853B-D3E070AD51EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59CB90CD-D2B1-4FB3-853B-D3E070AD51EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59CB90CD-D2B1-4FB3-853B-D3E070AD51EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59CB90CD-D2B1-4FB3-853B-D3E070AD51EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

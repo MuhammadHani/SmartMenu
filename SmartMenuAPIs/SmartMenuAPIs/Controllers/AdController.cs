@@ -6,8 +6,8 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 using SmartMenuAPIs.Models;
 
 namespace SmartMenuAPIs.Controllers
@@ -16,99 +16,106 @@ namespace SmartMenuAPIs.Controllers
     {
         private DatabaseContainer db = new DatabaseContainer();
 
-        // GET api/Ad
-        public IEnumerable<Ad> GetAds()
+        // GET api/Ad 
+        /// <summary>
+        /// Get Available advertisement
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<Ad> GetAds()
         {
-            return db.Ads.Include(x => x.AdsResources).AsEnumerable();
+            return db.Ads;
         }
 
-        // GET api/Ad/5
-        public Ad GetAd(int id)
-        {
-            Ad ad = db.Ads.Find(id);
-            if (ad == null)
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
-            }
+        //// GET api/Ad/5
+        //[ResponseType(typeof(Ad))]
+        //public IHttpActionResult GetAd(int id)
+        //{
+        //    Ad ad = db.Ads.Find(id);
+        //    if (ad == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return ad;
-        }
+        //    return Ok(ad);
+        //}
 
-        // PUT api/Ad/5
-        public HttpResponseMessage PutAd(int id, Ad ad)
-        {
-            if (!ModelState.IsValid)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
+        //// PUT api/Ad/5
+        //public IHttpActionResult PutAd(int id, Ad ad)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != ad.ID)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+        //    if (id != ad.ID)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(ad).State = EntityState.Modified;
+        //    db.Entry(ad).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!AdExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
-        // POST api/Ad
-        public HttpResponseMessage PostAd(Ad ad)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Ads.Add(ad);
-                db.SaveChanges();
+        //// POST api/Ad
+        //[ResponseType(typeof(Ad))]
+        //public IHttpActionResult PostAd(Ad ad)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, ad);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = ad.ID }));
-                return response;
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-        }
+        //    db.Ads.Add(ad);
+        //    db.SaveChanges();
 
-        // DELETE api/Ad/5
-        public HttpResponseMessage DeleteAd(int id)
-        {
-            Ad ad = db.Ads.Find(id);
-            if (ad == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
+        //    return CreatedAtRoute("DefaultApi", new { id = ad.ID }, ad);
+        //}
 
-            db.Ads.Remove(ad);
+        //// DELETE api/Ad/5
+        //[ResponseType(typeof(Ad))]
+        //public IHttpActionResult DeleteAd(int id)
+        //{
+        //    Ad ad = db.Ads.Find(id);
+        //    if (ad == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
+        //    db.Ads.Remove(ad);
+        //    db.SaveChanges();
 
-            return Request.CreateResponse(HttpStatusCode.OK, ad);
-        }
-
-
-
+        //    return Ok(ad);
+        //}
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            if (disposing)
+            {
+                db.Dispose();
+            }
             base.Dispose(disposing);
+        }
+
+        private bool AdExists(int id)
+        {
+            return db.Ads.Count(e => e.ID == id) > 0;
         }
     }
 }

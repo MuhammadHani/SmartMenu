@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="72cb0d23466a40f5a8c85b0d41afc756" Name="Diagram1" >
+        <EntityTypeShape EntityType="Database.Ad" Width="2.125" PointX="6.75" PointY="13.125" />
+        <EntityTypeShape EntityType="Database.AdsResource" Width="1.5" PointX="6.75" PointY="15.875" />
+        <EntityTypeShape EntityType="Database.Alert" Width="1.5" PointX="7.0978284269095528" PointY="1.6077737666702707" />
+        <EntityTypeShape EntityType="Database.Branch" Width="1.5" PointX="0.2024380938161342" PointY="28.830312354876806" />
+        <EntityTypeShape EntityType="Database.Category" Width="1.5" PointX="11.106332100511683" PointY="25.507694613890582" />
+        <EntityTypeShape EntityType="Database.Complaint" Width="1.5" PointX="4.471826380338439" PointY="16.158143602385252" />
+        <EntityTypeShape EntityType="Database.ItemPhoto" Width="1.5" PointX="1.2126075519307551" PointY="6.9542070063549124" />
+        <EntityTypeShape EntityType="Database.ItemRating" Width="1.5" PointX="6.2574048406711809" PointY="22.519874866362603" />
+        <EntityTypeShape EntityType="Database.ItemReview" Width="1.5" PointX="6.9667519009517278" PointY="25.228403207486682" />
+        <EntityTypeShape EntityType="Database.Item" Width="1.5" PointX="4.9374169171496378" PointY="30.862771227426254" />
+        <EntityTypeShape EntityType="Database.OrderItemPreference" Width="1.5" PointX="10.060711483499368" PointY="9.2170020235781571" />
+        <EntityTypeShape EntityType="Database.OrderItem" Width="1.5" PointX="8.19175613121677" PointY="1.8124514230584965" />
+        <EntityTypeShape EntityType="Database.Order" Width="1.5" PointX="6.8372694509277441" PointY="24.902499895963118" />
+        <EntityTypeShape EntityType="Database.Preference" Width="1.5" PointX="3.5752401200939157" PointY="1.3563045716641027" />
+        <EntityTypeShape EntityType="Database.SideDish" Width="1.5" PointX="3.5" PointY="11.75" />
+        <EntityTypeShape EntityType="Database.SubCategory" Width="1.5" PointX="8.8018855586656777" PointY="6.2036282896081119" />
+        <EntityTypeShape EntityType="Database.Table" Width="1.5" PointX="5.2439709777217223" PointY="25.711085778526535" />
+        <EntityTypeShape EntityType="Database.User" Width="1.5" PointX="10.725979763421222" PointY="15.136462308064319" />
+        <AssociationConnector Association="Database.FK_AdsResources_Ads" />
+        <AssociationConnector Association="Database.FK_Tables_Branches" />
+        <AssociationConnector Association="Database.FK_SubCategories_Categories" />
+        <AssociationConnector Association="Database.FK_ItemPhotos_Items" />
+        <AssociationConnector Association="Database.FK_ItemRatings_Items" />
+        <AssociationConnector Association="Database.FK_ItemReviews_Items" />
+        <AssociationConnector Association="Database.FK_Items_SubCategories" />
+        <AssociationConnector Association="Database.FK_OrderItems_Orders" />
+        <AssociationConnector Association="Database.FK_Orders_Tables" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

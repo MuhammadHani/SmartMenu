@@ -6,8 +6,8 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 using SmartMenuAPIs.Models;
 
 namespace SmartMenuAPIs.Controllers
@@ -16,102 +16,107 @@ namespace SmartMenuAPIs.Controllers
     {
         private DatabaseContainer db = new DatabaseContainer();
 
-        public CategoryController()
+        // GET api/Category 
+        /// <summary>
+        /// Get Categories
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<Category> GetCategories()
         {
-           db.Configuration.ProxyCreationEnabled = false;
+            return db.Categories;
         }
 
 
-        // GET api/Category
-        public IEnumerable<Category> GetCategories()
-        {
-            return db.Categories.AsEnumerable();
-        }
+        //// GET api/Category/5
+        //[ResponseType(typeof(Category))]
+        //public IHttpActionResult GetCategory(int id)
+        //{
+        //    Category category = db.Categories.Find(id);
+        //    if (category == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-        // GET api/Category/5
-        public Category GetCategory(int id)
-        {
-            Category category = db.Categories.Find(id);
-            if (category == null)
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
-            }
+        //    return Ok(category);
+        //}
 
-            return category;
-        }
+        //// PUT api/Category/5
+        //public IHttpActionResult PutCategory(int id, Category category)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-        // PUT api/Category/5
-        public HttpResponseMessage PutCategory(int id, Category category)
-        {
-            if (!ModelState.IsValid)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
+        //    if (id != category.ID)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            if (id != category.ID)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+        //    db.Entry(category).State = EntityState.Modified;
 
-            db.Entry(category).State = EntityState.Modified;
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!CategoryExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
+        //// POST api/Category
+        //[ResponseType(typeof(Category))]
+        //public IHttpActionResult PostCategory(Category category)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-        // POST api/Category
-        public HttpResponseMessage PostCategory(Category category)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Categories.Add(category);
-                db.SaveChanges();
+        //    db.Categories.Add(category);
+        //    db.SaveChanges();
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, category);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = category.ID }));
-                return response;
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = category.ID }, category);
+        //}
 
-        // DELETE api/Category/5
-        public HttpResponseMessage DeleteCategory(int id)
-        {
-            Category category = db.Categories.Find(id);
-            if (category == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
+        //// DELETE api/Category/5
+        //[ResponseType(typeof(Category))]
+        //public IHttpActionResult DeleteCategory(int id)
+        //{
+        //    Category category = db.Categories.Find(id);
+        //    if (category == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Categories.Remove(category);
+        //    db.Categories.Remove(category);
+        //    db.SaveChanges();
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK, category);
-        }
+        //    return Ok(category);
+        //}
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            if (disposing)
+            {
+                db.Dispose();
+            }
             base.Dispose(disposing);
+        }
+
+        private bool CategoryExists(int id)
+        {
+            return db.Categories.Count(e => e.ID == id) > 0;
         }
     }
 }

@@ -1,39 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Net;
+//using System.Net.Http;
+//using System.Web.Http;
 
-namespace SmartMenuAPIs.Controllers
-{
-    public class ValuesController : ApiController
-    {
-        // GET api/values
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+//namespace SmartMenuAPIs.Controllers
+//{
 
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+//    public class ValuesController : ApiController
+//    {
+//        // GET api/<controller>
+//        public IEnumerable<string> Get()
+//        {
+//            return new string[] { "value1", "value2" };
+//        }
 
-        // POST api/values
-        public void Post([FromBody]string value)
-        {
-        }
+//        // GET api/<controller>/5
+//        public string Get(int id)
+//        {
+//            return "value";
+//        }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+//        // POST api/<controller>
+//        public void Post([FromBody]string value)
+//        {
+//        }
 
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
-    }
-}
+//        // PUT api/<controller>/5
+//        public void Put(int id, [FromBody]string value)
+//        {
+//        }
+
+//        // DELETE api/<controller>/5
+//        public void Delete(int id)
+//        {
+//        }
+//    }
+//}
